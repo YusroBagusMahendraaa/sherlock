@@ -1,0 +1,156 @@
+/* Gaya untuk Menu Utama */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lakki Reddy', cursive;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.title {
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  font-size: 2.5em;
+}
+
+.title span {
+  font-size: 3.5em;
+  font-weight: bold;
+}
+
+.title small {
+  display: block;
+  font-size: 1.5em;
+}
+
+.start-button {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  color: white;
+  font-family: 'Lakki Reddy', cursive;
+  font-size: 2em;
+  border: none;
+  text-shadow: 2px 2px 5px black;
+  cursor: pointer;
+}
+
+.start-button:hover {
+  text-shadow: 3px 3px 10px white;
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* Gaya untuk Modal Registrasi */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #f8d776;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 500px; /* Menambahkan lebar kotak */
+  max-width: 80%; /* Batas maksimal agar responsif */
+}
+.modal-content h2 {
+  margin-bottom: 10px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content label {
+  margin: 5px 0;
+  text-align: left;
+}
+
+.modal-content input {
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  background-color: #b8860b;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #a6750a;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: red;
+}
+
+/* Gaya untuk Modal Login */
+#modal-login .modal-content h2 {
+  color: #3b5998; /* Warna biru untuk variasi */
+}
+
+#modal-login .modal-content button {
+  background-color: #3b5998; /* Warna biru untuk tombol login */
+}
+
+#modal-login .modal-content button:hover {
+  background-color: #324d79; /* Variasi warna hover */
+}
+
+#modal-login .modal-content a {
+  color: #3b5998; /* Warna untuk link pendaftaran */
+  text-decoration: none;
+}
+
+#modal-login .modal-content a:hover {
+  text-decoration: underline;
+}
+
+/* Animasi modal fade-in dan fade-out */
+.modal {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: none;
+}
+
+.modal.show {
+  display: flex;
+  opacity: 1;
+}

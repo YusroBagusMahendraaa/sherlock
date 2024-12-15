@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sherlock Holmes</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <img src="menu.png" alt="Background" class="background">
+    <h1 class="title">The Adventure of <br><span>SHERLOCK HOLMES</span><br><small>Cabang Cibubur</small></h1>
+    <button class="start-button">Click to Start</button>
+  </div>
+
+  <!-- Modal Registrasi -->
+  <div class="modal" id="modal-registrasi">
+    <div class="modal-content">
+      <h2>Halaman Registrasi</h2>
+      <form>
+        <label>Email</label>
+        <input type="email" placeholder="Masukkan Email">
+        <label>Password</label>
+        <input type="password" placeholder="Masukkan Password">
+        <label>Confirm Password</label>
+        <input type="password" placeholder="Konfirmasi Password">
+        <button type="submit">Daftar</button>
+      </form>
+      <p>Sudah Punya Akun? <a href="#">Login</a></p>
+      <span class="close-button">&times;</span>
+    </div>
+  </div>
+
+<!-- Modal Login -->
+<div class="modal" id="modal-login">
+  <div class="modal-content">
+    <h2>Halaman Login</h2>
+    <form>
+      <label>Email</label>
+      <input type="email" placeholder="Masukkan Email">
+      <label>Password</label>
+      <input type="password" placeholder="Masukkan Password">
+      <button type="submit">Login</button>
+    </form>
+    <p>Belum Punya Akun? <a href="#" id="to-register">Daftar</a></p>
+    <span class="close-button">&times;</span>
+  </div>
+</div>
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
