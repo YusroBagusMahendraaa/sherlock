@@ -1,63 +1,70 @@
-// Ambil elemen tombol dan modal
-const startButton = document.querySelector('.start-button');
-const registerModal = document.getElementById('modal-registrasi');
-const loginModal = document.getElementById('modal-login');
-const closeButtons = document.querySelectorAll('.close-button'); // Semua tombol close
+const timerElement = document.querySelector('.timer');
+const itemsOnScreen = document.querySelectorAll('.item');
+const bottomItems = document.querySelectorAll('.bottom-item');
+const selesaiBox = document.querySelector('.selesai-box');
+const gameOverScreen = document.querySelector('.game-over');
+const restartButton = document.querySelector('#restart-button');
 
-// Tombol untuk berpindah modal
-const toRegisterLink = document.getElementById('to-register'); // Link "Daftar" di modal login
-const toLoginLink = document.querySelector('#modal-registrasi a'); // Link "Login" di modal registrasi
+let timeRemaining = 6 * 60; // 6 menit dalam detik
 
-// Fungsi untuk menampilkan modal dengan transisi
-function showModal(modal) {
-  modal.style.display = 'flex';
-  setTimeout(() => modal.classList.add('show'), 10);
+// Fungsi untuk memperbarui timer
+function updateTimer() {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    if (timeRemaining > 0) {
+        timeRemaining--;
+    } else {
+        clearInterval(timerInterval);
+        showGameOver();
+    }
 }
 
-// Fungsi untuk menyembunyikan modal dengan transisi
-function hideModal(modal) {
-  modal.classList.remove('show');
-  setTimeout(() => {
-    modal.style.display = 'none';
-  }, 300); // Sesuaikan durasi dengan CSS transition
+const timerInterval = setInterval(updateTimer, 1000);
+updateTimer();
+
+// Fungsi untuk menampilkan kotak \"Selesai\"
+function checkCompletion() {
+    const revealedItems = document.querySelectorAll('.bottom-item.revealed');
+    if (revealedItems.length === bottomItems.length) {
+        selesaiBox.style.display = 'block';
+    }
 }
 
-// Ketika tombol Start diklik, tampilkan modal login
-startButton.addEventListener('click', () => {
-  showModal(loginModal);
-});
+// Fungsi untuk menampilkan layar game over
+function showGameOver() {
+    gameOverScreen.style.display = 'flex';
+}
 
-// Ketika tombol "Daftar" di modal login diklik
-toRegisterLink.addEventListener('click', (event) => {
-  event.preventDefault(); // Mencegah reload halaman
-  hideModal(loginModal); // Sembunyikan modal login
-  setTimeout(() => {
-    showModal(registerModal); // Tampilkan modal registrasi
-  }, 300);
-});
+// Fungsi untuk mereset game
+function restartGame() {
+    timeRemaining = 6 * 60;
+    updateTimer();
+    clearInterval(timerInterval);
+    setInterval(updateTimer, 1000);
 
-// Ketika tombol "Login" di modal registrasi diklik
-toLoginLink.addEventListener('click', (event) => {
-  event.preventDefault(); // Mencegah reload halaman
-  hideModal(registerModal); // Sembunyikan modal registrasi
-  setTimeout(() => {
-    showModal(loginModal); // Tampilkan modal login
-  }, 300);
-});
+    bottomItems.forEach(item => {
+        item.classList.remove('revealed');
+        item.classList.add('siluet');
+    });
 
-// Ketika tombol close pada modal diklik
-closeButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    const modal = button.closest('.modal'); // Cari modal terdekat
-    hideModal(modal);
-  });
-});
+    selesaiBox.style.display = 'none';
+    gameOverScreen.style.display = 'none';
+}
 
-// Menutup modal ketika area di luar modal diklik
-window.addEventListener('click', (event) => {
-  if (event.target === registerModal) {
-    hideModal(registerModal);
-  } else if (event.target === loginModal) {
-    hideModal(loginModal);
-  }
+// Tambahkan event listener ke tombol restart
+restartButton.addEventListener('click', restartGame);
+
+// Event listener untuk klik item
+itemsOnScreen.forEach(item => {
+    item.addEventListener('click', () => {
+        const itemAlt = item.alt;
+        bottomItems.forEach(bottomItem => {
+            if (bottomItem.alt === itemAlt) {
+                bottomItem.classList.add('revealed');
+                bottomItem.classList.remove('siluet');
+            }
+        });
+        checkCompletion();
+    });
 });

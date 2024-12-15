@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sherlock Holmes</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Living Room</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <img src="menu.png" alt="Background" class="background">
-    <h1 class="title">The Adventure of <br><span>SHERLOCK HOLMES</span><br><small>Cabang Cibubur</small></h1>
-    <button class="start-button">Click to Start</button>
-  </div>
+    <div class="container">
+        <!-- Background -->
+        <img src="background.png" alt="Background" class="background">
 
-  <!-- Modal Registrasi -->
-  <div class="modal" id="modal-registrasi">
-    <div class="modal-content">
-      <h2>Halaman Registrasi</h2>
-      <form>
-        <label>Email</label>
-        <input type="email" placeholder="Masukkan Email">
-        <label>Password</label>
-        <input type="password" placeholder="Masukkan Password">
-        <label>Confirm Password</label>
-        <input type="password" placeholder="Konfirmasi Password">
-        <button type="submit">Daftar</button>
-      </form>
-      <p>Sudah Punya Akun? <a href="#">Login</a></p>
-      <span class="close-button">&times;</span>
+        <!-- Items on screen -->
+        <img src="gelas.png" alt="Gelas" class="item gelas">
+        <img src="pisau.png" alt="Pisau" class="item pisau">
+        <img src="pngimg.com - broken_glass_PNG35 1.png" alt="Broken Glass" class="item broken-glass">
+        <img src="bundir.png" alt="Hanging Figure" class="item bundir">
+        <img src="fOJIcY-blood-splatter-picture 1.png" alt="Blood Splatter" class="item blood-splatter">
+
+        <!-- Timer -->
+        <div class="timer">6:00</div>
+
+        <!-- Bottom Bar -->
+        <div class="bottom-bar">
+            <img src="pisau.png" alt="Pisau" class="bottom-item siluet">
+            <img src="gelas.png" alt="Gelas" class="bottom-item siluet">
+            <img src="bundir.png" alt="Hanging Figure" class="bottom-item siluet">
+            <img src="pngimg.com - broken_glass_PNG35 1.png" alt="Broken Glass" class="bottom-item siluet">
+            <img src="fOJIcY-blood-splatter-picture 1.png" alt="Blood Splatter" class="bottom-item siluet">
+        </div>
+
+        <!-- Kotak Selesai -->
+        <div class="selesai-box">Selesai</div>
+
+        <!-- Game Over -->
+        <div class="game-over">
+            <div class="game-over-content">
+                <p>Kamu Gagal!</p>
+                <button id="restart-button">Mengulang</button>
+            </div>
+        </div>
     </div>
-  </div>
-
-<!-- Modal Login -->
-<div class="modal" id="modal-login">
-  <div class="modal-content">
-    <h2>Halaman Login</h2>
-    <form>
-      <label>Email</label>
-      <input type="email" placeholder="Masukkan Email">
-      <label>Password</label>
-      <input type="password" placeholder="Masukkan Password">
-      <button type="submit">Login</button>
-    </form>
-    <p>Belum Punya Akun? <a href="#" id="to-register">Daftar</a></p>
-    <span class="close-button">&times;</span>
-  </div>
-</div>
-
-
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,156 +1,173 @@
-/* Gaya untuk Menu Utama */
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Lakki Reddy', cursive;
-  overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f5f2;
 }
 
 .container {
-  position: relative;
-  text-align: center;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
+/* Background */
 .background {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
 }
 
-.title {
-  position: absolute;
-  top: 10%;
-  width: 100%;
-  color: white;
-  text-shadow: 2px 2px 5px black;
-  font-size: 2.5em;
+/* Items on Screen */
+.item {
+    position: absolute;
+    cursor: pointer;
 }
 
-.title span {
-  font-size: 3.5em;
-  font-weight: bold;
+.gelas {
+    width: 50px;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.title small {
-  display: block;
-  font-size: 1.5em;
+.pisau {
+    width: 70px;
+    top: 55%;
+    left: 20%;
 }
 
-.start-button {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: none;
-  color: white;
-  font-family: 'Lakki Reddy', cursive;
-  font-size: 2em;
-  border: none;
-  text-shadow: 2px 2px 5px black;
-  cursor: pointer;
+.broken-glass {
+    width: 90px;
+    top: 38%;
+    left: 52%;
 }
 
-.start-button:hover {
-  text-shadow: 3px 3px 10px white;
-  transform: translateX(-50%) scale(1.1);
+.bundir {
+    width: 120px;
+    top: -20%;
+    left: 80%;
 }
 
-/* Gaya untuk Modal Registrasi */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+.blood-splatter {
+    width: 100px;
+    top: 48%;
+    left: 88%;
 }
 
-.modal-content {
-  background: #f8d776;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  width: 500px; /* Menambahkan lebar kotak */
-  max-width: 80%; /* Batas maksimal agar responsif */
-}
-.modal-content h2 {
-  margin-bottom: 10px;
-}
-
-.modal-content form {
-  display: flex;
-  flex-direction: column;
+/* Timer */
+.timer {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 24px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
 }
 
-.modal-content label {
-  margin: 5px 0;
-  text-align: left;
+/* Bottom Bar */
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: url('Bar.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
 }
 
-.modal-content input {
-  margin-bottom: 10px;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.bottom-item {
+    width: 50px;
+    cursor: pointer;
+    filter: brightness(0); /* Siluet hitam */
+    transition: filter 0.3s ease;
 }
 
-.modal-content button {
-  background-color: #b8860b;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
+.bottom-item[alt="Hanging Figure"] {
+    height: 130%;
+    width: 50px; /* Sesuaikan ukuran lebih kecil */
+    object-fit: contain; /* Pastikan gambar tetap proporsional */
 }
 
-.modal-content button:hover {
-  background-color: #a6750a;
+
+.bottom-item.revealed {
+    filter: none; /* Kembalikan ke tampilan normal */
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5em;
-  cursor: pointer;
-  color: red;
+/* Kotak Selesai */
+.selesai-box {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+    background-color: #a0522d;
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    display: none; /* Default tersembunyi */
 }
 
-/* Gaya untuk Modal Login */
-#modal-login .modal-content h2 {
-  color: #3b5998; /* Warna biru untuk variasi */
+/* Game Over */
+.game-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Layar gelap */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
 }
 
-#modal-login .modal-content button {
-  background-color: #3b5998; /* Warna biru untuk tombol login */
+.game-over-content {
+    text-align: center;
+    color: white;
+    background-color: #a0522d;
+    padding: 20px;
+    border-radius: 8px;
 }
 
-#modal-login .modal-content button:hover {
-  background-color: #324d79; /* Variasi warna hover */
+.game-over-content p {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-#modal-login .modal-content a {
-  color: #3b5998; /* Warna untuk link pendaftaran */
-  text-decoration: none;
+.game-over-content button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: white;
+    color: #a0522d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-#modal-login .modal-content a:hover {
-  text-decoration: underline;
-}
-
-/* Animasi modal fade-in dan fade-out */
-.modal {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  display: none;
-}
-
-.modal.show {
-  display: flex;
-  opacity: 1;
+.game-over-content button:hover {
+    background-color: #ddd;
 }
